@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url('bgimg.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+  }
+
 .body-text{
     display: flex;
     font-family: "Montserrat", sans-serif ;
@@ -74,9 +81,26 @@ nav {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    position:relative;
+    right: -47%;
+    
   }
 
 .button-align{
     margin:0 auto;
     display:block;
   }
+
+footer{
+    height: 100px;
+    background-color: rgb(167, 164, 164);
+    text-align: center;
+    font-size: 50px;
+}
+
+p{
+    text-align: center;
+    background-color:cadetblue;
+    font-family: monospace;
+    font-size: 20px;
+}
