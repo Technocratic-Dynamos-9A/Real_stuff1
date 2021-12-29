@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Map</title>
+	<style>
+	   #map {
+        height: 400px;
+        
+        width: 100%;
+        
+		}
+	</style>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h3>Complaint store</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiAe0Uffz4Dbbf8wLpcieHmDkte1_1_04&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+	<script>
+	    var x = document.getElementById("demo");
+		function getLocation() {
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(initMap);
+		  } else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		  
+		}
+			
+		function initMap(position) {
+		  var latitude = position.coords.latitude;
+		  var longitude = position.coords.longitude;
+		  // The location 
+		  const pos = { lat: latitude, lng: longitude };
+		  // The map, centered at location
+		  const map = new google.maps.Map(document.getElementById("map"), {
+			zoom: 4,
+			center: pos,
+		  });
+		  // The marker, positioned at location
+		  const marker = new google.maps.Marker({
+			position: pos,
+			map: map,
+		  });
+		  document.getElementById("lat").value = latitude;
+		  document.getElementById("long").value = longitude;
+		}
+	</script>
+<button onclick="getLocation()">Register</button>
+
+<p id="demo"></p>
+
+<?php
+    
+?>
+
+<div id="content">
+  
+        <form method="POST" 
+              action="C:\XAMPP\htdocs\first\index.php" 
+              enctype="multipart/form-data">
+		<div>
+            <input type="file" 
+                   name="uploadfile" 
+                   value="" />
+		</div>
+		
+		    <div>
+                <label for="name">First Name:</label>
+                <input type="text" name="first_name" required="required" placeholder="Enter your name" />
+            </div>
+
+            <div>
+                <label for="name">Last Name:</label>
+                <input type="email" name="last_name" required="required" placeholder="Enter your email" />
+            </div>
+			<div>
+			<input type="hidden" name="lat" id="lat" />
+			</div>
+            <div>
+			<input type="hidden" name="long" id="long" />
+			</div>
+			<div>
+                <button type="submit"
+                        name="submit">
+                  SUBMIT
+                </button>
+            </div>
+</div>
+
+			
+</body>
+
+</html>
+
