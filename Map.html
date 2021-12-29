@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Mosquito Alert </title>
+        <meta name="viewport" content="width=device, initial-scale=1.0"> <meta>
+        <link rel="stylesheet" href="app.css">
+        <style>
+            #map {
+              height: 400px;
+              
+              width: 100%;
+              
+              }
+          </style>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <script>
+            var x = document.getElementById("demo");
+            
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(initMap);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+          
+      function initMap(position) {
+        
+        // The location 
+        const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
+        // The map, centered at location
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: pos,
+        });
+        // The marker, positioned at location
+        const marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+        });
+      }
+          </script>
+          
+    </head>
+    <body>
+        <nav>
+            <div class="heading">
+                <h4>Mosquito Alert</h4>
+            </div>
+            <ul class="nav-links">
+                <li><a class="active" href="IndexH.html">Home</a></li>
+                <li><a href="IndexH.html">Awareness and Information</a></li>
+                <li><a href="Map.html">Map</a></li>
+                <li><a href="IndexH.html">Our Team</a></li>
+            </ul>
+        </nav>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiAe0Uffz4Dbbf8wLpcieHmDkte1_1_04&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+	<div class="button-align">
+    <button class="button" onclick="getLocation()">Show location</button>
+  </div>
+
+
+
+</html>
